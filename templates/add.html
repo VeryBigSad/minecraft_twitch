@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Получить доступ на вайтлист</h1>
+        <form method="post">
+            <label for="twitch-username">Ваш юзернейм в Майнкрафт</label>
+            <input type="text" id="twitch-username" name="mc-username">
+            <button type="submit">Подтвердить</button>
+        </form>
+{% endblock %}
