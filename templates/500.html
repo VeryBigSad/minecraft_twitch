@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="text-light">Произошла какая-то ошибка, попробуйте позже.</h1>
+    {% if title %}
+        <h1 class="text-light">{{ title }}</h1>
+    {% else %}
+        <h1 class="text-light">Произошла какая-то ошибка, попробуйте позже.</h1>
+    {% endif %}
+
     <a href="/" class=" tetext-muted mt-5">Вернуться на главную</a>
 {% endblock %}

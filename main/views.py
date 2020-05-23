@@ -42,7 +42,7 @@ def index(request):
             }).json()
             access_token = resp.get('access_token')
             if not access_token:
-                raise Exception('Ошибка, попробуйте переавторизоваться.')
+                return render(request, '500.html', context={'title': 'Ошибка, попробуйте переавторизоваться.'})
             headers = {'Accept': 'application/vnd.twitchtv.v5+json',
                        'Client-ID': 'geqwz9a4dhcg3wcmv8qsu07p5bb9cx',
                        'Authorization': 'OAuth %s' % access_token}
@@ -62,6 +62,6 @@ def index(request):
             try:
                 obj.save()
             except IntegrityError:
-                raise Exception('Ты уже добавлен в вайт-лист.')
+                return render(request, '500.html', context={'title': 'Ты уже добавлен в вайтлист.'})
             return render(request, 'add.html', context={'twitch_id': user_id})
         return render(request, 'index.html', context={'test_id': channel_id})
