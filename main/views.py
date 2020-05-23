@@ -1,20 +1,16 @@
 import string
 
 import requests
-from django.contrib.auth import get_user_model
-from django.core.exceptions import ValidationError
+
 from django.db import IntegrityError
-from django.http import HttpResponse, Http404, HttpResponseServerError
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 
 from felix_twitch.settings import DOMAIN_NAME
 from main.models import Player
 
-User = get_user_model()
-
 
 def index(request):
-    channel_id = ''
+    channel_id = '423486275'
 
     if request.method == 'POST':
         username = request.POST['mc-username']
@@ -24,7 +20,7 @@ def index(request):
         for i in username:
             if i.upper() not in string.ascii_uppercase + '0123456789_':
                 # raise ValidationError
-                raise HttpResponseServerError('Юзернейм неверен.')
+                raise Exception('Юзернейм неверен.')
 
         twitch_id = request.POST.get('id')
         obj = Player.objects.get(twitch_id=twitch_id, mc_username=None)
@@ -46,7 +42,7 @@ def index(request):
             }).json()
             access_token = resp.get('access_token')
             if not access_token:
-                return HttpResponseServerError('Ошибка, попробуйте переавторизоваться.')
+                raise Exception('Ошибка, попробуйте переавторизоваться.')
             headers = {'Accept': 'application/vnd.twitchtv.v5+json',
                        'Client-ID': 'geqwz9a4dhcg3wcmv8qsu07p5bb9cx',
                        'Authorization': 'OAuth %s' % access_token}
@@ -66,6 +62,6 @@ def index(request):
             try:
                 obj.save()
             except IntegrityError:
-                return HttpResponseServerError('Ты уже добавлен в вайт-лист.')
+                raise Exception('Ты уже добавлен в вайт-лист.')
             return render(request, 'add.html', context={'twitch_id': user_id})
         return render(request, 'index.html', context={'test_id': channel_id})

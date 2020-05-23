@@ -12,3 +12,6 @@ urlpatterns = [
     path('mc_server', include('main.urls')),
     path('', red_to_index)
 ]
+
+handler500 = 'felix_twitch.views.handler500'
+handler404 = 'felix_twitch.views.handler404'
