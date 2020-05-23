@@ -8,8 +8,8 @@ def red_to_index(request):
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('mc_server', include('main.urls')),
+    # path('admin-panel/', admin.site.urls),
+    path('server', include('main.urls')),
     path('', red_to_index)
 ]
 
