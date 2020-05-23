@@ -62,6 +62,7 @@ def index(request):
             try:
                 obj.save()
             except IntegrityError:
-                return render(request, '500.html', context={'title': 'Ты уже добавлен в вайтлист.'})
+                if not Player.objects.filter(twitch_id=user_id, mc_username=None).exists():
+                    return render(request, '500.html', context={'title': 'Ты уже добавлен в вайтлист.'})
             return render(request, 'add.html', context={'twitch_id': user_id})
         return render(request, 'index.html', context={'test_id': channel_id})
