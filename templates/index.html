@@ -2,8 +2,22 @@
 
 
 {% block content %}
-    <h1>Авторизоваться через Twitch</h1>
-    <a href="https://id.twitch.tv/oauth2/authorize?client_id=geqwz9a4dhcg3wcmv8qsu07p5bb9cx&redirect_uri=http://localhost/mc_server&response_type=code&scope=user_subscriptions user_read">
-        да да нажми сюды
-    </a>
+    <h1 class="text-light">Попасть на сервер Юечки</h1>
+    <div class="btn-group mt-4">
+        <a href="https://id.twitch.tv/oauth2/authorize?client_id=geqwz9a4dhcg3wcmv8qsu07p5bb9cx&redirect_uri=http://{{ DOMAIN_NAME }}/mc_server&response_type=code&scope=user_subscriptions" class="btn btn-twitch">
+            <i class="fab fa-twitch pt-1" style="font-size: 1.3rem; color: white"></i>
+        </a>
+        <a href="https://id.twitch.tv/oauth2/authorize?client_id=geqwz9a4dhcg3wcmv8qsu07p5bb9cx&redirect_uri=http://{{ DOMAIN_NAME }}/mc_server&response_type=code&scope=user_subscriptions" class="btn btn-twitch">
+            <span style="color: white; font-size: 1.2rem">Авторизоваться через Twitch</span>
+        </a>
+    </div>
+    <p class="text-muted" style="margin-top: 9rem">
+        Для того чтобы попасть на сервер надо быть платным подписчиком канала yuuechka,
+        авторизоваться через твич и вписать свой ник или купить проходку на канале за
+        9.999 баллов вписав туда свой ник.
+    </p>
+{% endblock %}
+
+{% block footer %}
+
 {% endblock %}

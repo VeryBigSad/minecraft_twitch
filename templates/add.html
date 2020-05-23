@@ -3,9 +3,17 @@
 
 {% block content %}
     <h1>Получить доступ на вайтлист</h1>
-        <form method="post">
-            <label for="twitch-username">Ваш юзернейм в Майнкрафт</label>
-            <input type="text" id="twitch-username" name="mc-username">
-            <button type="submit">Подтвердить</button>
+    <div class="text-center justify-content-center">
+        <form class="needs-validation" method="POST" novalidate>
+            {% csrf_token %}
+            <label for="twitch-username" class="text-light">Ваш юзернейм в Майнкрафт</label>
+            <input class="form-control" type="text" id="twitch-username" name="mc-username" maxlength="100" required>
+            <div class="invalid-feedback">
+                Это поле обязательно.
+            </div>
+
+            <input value="{{ twitch_id }}" name="id" hidden>
+            <button type="submit" class="mt-2 btn btn-primary">Подтвердить</button>
         </form>
+    </div>
 {% endblock %}

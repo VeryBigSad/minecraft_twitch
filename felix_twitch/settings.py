@@ -25,8 +25,10 @@ SECRET_KEY = 'sjn(%))*-^fg5%5$h)1#q$0@4$646#_(m7n73rmp8)k21vrbj4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['*']
 
+DOMAIN_NAME = 'ec2-3-126-245-243.eu-central-1.compute.amazonaws.com'
 
 # Application definition
 
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'main.apps.MainConfig',
 ]
 
@@ -64,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'felix_twitch.context.domain_name'
             ],
         },
     },
