@@ -8,7 +8,7 @@ def red_to_index(request):
 
 
 urlpatterns = [
-    # path('admin-panel/', admin.site.urls),
+    path('admin-panel/', admin.site.urls),
     path('login', include('main.urls')),
     path('', red_to_index)
 ]

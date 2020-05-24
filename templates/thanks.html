@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="text-light">Вы добавлены в вайтлист!</h1>
+    <h1 class="text-light font-weight-normal">{{ username }}, добро пожаловать на сервере!</h1>
+    <div class="text-light container mt-5" style="font-size: 1.3rem">
+        <h2 class="mb-4 font-weight-bold">Важно!</h2>
+        <span>- Прежде чем зайти на сервер, нужно прочитать <a href="https://l.khrmff.ru/surules">правила</a></span><br>
+        <span>- Сервер работает на версии <span class="font-italic">1.15.2</span></span><br>
+        <span>- <span class="font-weight-bold">IP</span>: play.yuuechka.fun</span><br>
+        <span>- Лицензия <span class="font-weight-bold">не</span> обязательна</span><br>
+    </div>
 {% endblock %}

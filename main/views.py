@@ -11,6 +11,7 @@ from main.models import Player
 
 def index(request):
     channel_id = '423486275'
+    return render(request, 'thanks.html', context={'username': 'FUCKER'})
 
     if request.method == 'POST':
         username = request.POST['mc-username']
@@ -35,7 +36,7 @@ def index(request):
             # getting user information
             resp = requests.post('https://id.twitch.tv/oauth2/token', data={
                 'client_id': 'geqwz9a4dhcg3wcmv8qsu07p5bb9cx',
-                'client_secret': '37cs0vpf6k3l3s71d3e8ios99ql6wi',
+                'client_secrets': '37cs0vpf6k3l3s71d3e8ios99ql6wi',
                 'code': request.GET.get('code'),
                 'grant_type': 'authorization_code',
                 'redirect_uri': 'http://' + DOMAIN_NAME,
